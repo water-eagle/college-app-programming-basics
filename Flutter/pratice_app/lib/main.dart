@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return ListView(
       scrollDirection: Axis.horizontal,
       children: List.generate(
-        10,
+        50,
         (index) => Container(
           width: 100,
           height: 100,
