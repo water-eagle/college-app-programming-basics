@@ -51,4 +51,12 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
   }
+
+  Widget createS2() {
+    return SizedBox(
+      width: 100,
+      height: 100,
+      child: Container(color: Colors.amber),
+    );
+  }
 }
