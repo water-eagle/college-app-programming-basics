@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(child: createS3()),
+      body: Center(child: createS4()),
     );
   }
 
@@ -74,6 +74,50 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Center(child: Text(index.toString())),
         ),
       ),
+    );
+  }
+
+  // 4.4.? PageView 만들기 -
+  Widget createS4() {
+    return PageView(
+      children: [
+        Container(
+          color: Colors.red,
+          child: const Center(
+            child: Text(
+              "page 1",
+              style: TextStyle(fontSize: 50, color: Colors.white),
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.blue,
+          child: const Center(
+            child: Text(
+              "page 2",
+              style: TextStyle(fontSize: 50, color: Colors.white),
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.green,
+          child: const Center(
+            child: Text(
+              "page 3",
+              style: TextStyle(fontSize: 50, color: Colors.white),
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.amber,
+          child: const Center(
+            child: Text(
+              "page 4",
+              style: TextStyle(fontSize: 50, color: Colors.white),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
