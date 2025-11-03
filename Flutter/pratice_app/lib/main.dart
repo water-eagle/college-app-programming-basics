@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(child: createS1()),
+      body: Center(child: createS3()),
     );
   }
 
@@ -57,6 +57,23 @@ class _MyHomePageState extends State<MyHomePage> {
       width: 100,
       height: 100,
       child: Container(color: Colors.amber),
+    );
+  }
+
+  // 4.4.7 ListView 가로 스크롤 만들기 - 186쪽
+  Widget createS3() {
+    return ListView(
+      scrollDirection: Axis.horizontal,
+      children: List.generate(
+        10,
+        (index) => Container(
+          width: 100,
+          height: 100,
+          margin: const EdgeInsets.all(5),
+          color: Colors.green.withAlpha((index + 1) * 25),
+          child: Center(child: Text(index.toString())),
+        ),
+      ),
     );
   }
 }
