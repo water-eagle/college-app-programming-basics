@@ -1,3 +1,4 @@
+// 9주차
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,7 +30,10 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+  late TabController _tabController;
+  bool _opacity = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,6 +119,63 @@ class _MyHomePageState extends State<MyHomePage> {
               "page 4",
               style: TextStyle(fontSize: 50, color: Colors.white),
             ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  /*
+  Widget createS5() {
+    return Column(
+      children: [
+        Expanded(child: TabBarView(controller: _tabController,
+        children: [
+          Container(
+            color: Colors.blue,
+            child: Center(child: Text('메뉴1 페이지'),),
+          ),
+          Container(
+            color: Colors.blue,
+            child: Center(child: Text('메뉴2 페이지'),),
+          ),
+          Container(
+            color: Colors.blue,
+            child: Center(child: Text('메뉴3 페이지'),),
+          )
+        ],
+        )
+      )
+      ],
+    );
+  }
+  */
+
+  // 4.5.3 AnimatedContainer - 216쪽
+  Widget createS6() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 1000),
+          width: _opacity ? 100 : 150,
+          height: _opacity ? 100 : 150,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: _opacity ? Colors.red : Colors.blue,
+          ),
+          onEnd: () {
+            print('어쩌고저쩌고');
+          },
+        ),
+        Center(
+          child: ElevatedButton(
+            onPressed: () {
+              setState(() {
+                _opacity = !_opacity;
+              });
+            },
+            child: const Text('변경하기'),
           ),
         ),
       ],
