@@ -1,4 +1,4 @@
-# app-programming-basics
+# college-app-programming-basics
 
 앱프로그래밍 기초 배우는 중...
 
