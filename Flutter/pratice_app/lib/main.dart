@@ -32,7 +32,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   late TabController _tabController;
-  bool _opacity = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  bool opacity = false; // 이게 맞는지 수업시간에 확인하기
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +71,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-  // 4.4.7 ListView 가로 스크롤 만들기 - 186쪽
+  // 4.4.7 ListView 가로 스크롤 만들기 - p182
+  // p184
   Widget createS3() {
     return ListView(
       scrollDirection: Axis.horizontal,
@@ -81,7 +89,8 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-  // 4.4.? PageView 만들기 -
+  // 4.4.9 PageView 만들기 - p202
+  // p202
   Widget createS4() {
     return PageView(
       children: [
@@ -125,55 +134,59 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     );
   }
 
-  /*
+  // 4.4.10 TabBar 위젯 - p209
+  // p212
   Widget createS5() {
     return Column(
       children: [
-        Expanded(child: TabBarView(controller: _tabController,
-        children: [
-          Container(
-            color: Colors.blue,
-            child: Center(child: Text('메뉴1 페이지'),),
+        Expanded(
+          child: TabBarView(
+            controller: _tabController,
+            children: [
+              Container(
+                color: Colors.blue,
+                child: Center(child: Text('메뉴1 페이지')),
+              ),
+              Container(
+                color: Colors.blue,
+                child: Center(child: Text('메뉴2 페이지')),
+              ),
+              Container(
+                color: Colors.blue,
+                child: Center(child: Text('메뉴3 페이지')),
+              ),
+            ],
           ),
-          Container(
-            color: Colors.blue,
-            child: Center(child: Text('메뉴2 페이지'),),
-          ),
-          Container(
-            color: Colors.blue,
-            child: Center(child: Text('메뉴3 페이지'),),
-          )
-        ],
-        )
-      )
+        ),
       ],
     );
   }
-  */
 
-  // 4.5.3 AnimatedContainer - 216쪽
+  // 4.5.3 AnimatedContainer - p219
+  // p219
   Widget createS6() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         AnimatedContainer(
           duration: const Duration(milliseconds: 1000),
-          width: _opacity ? 100 : 150,
-          height: _opacity ? 100 : 150,
+          width: opacity ? 100 : 150,
+          height: opacity ? 100 : 150,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: _opacity ? Colors.red : Colors.blue,
+            color: opacity ? Colors.red : Colors.blue,
           ),
           onEnd: () {
-            print('어쩌고저쩌고');
+            debugPrint(
+              '어쩌고저쩌고',
+            ); // print() 보다 안전하지만 간단하게 log를 보고 싶으면 debugPrint()를 사용하면 된다.
           },
         ),
         Center(
           child: ElevatedButton(
             onPressed: () {
-              setState(() {
-                _opacity = !_opacity;
-              });
+              opacity = !opacity;
+              setState(() {});
             },
             child: const Text('변경하기'),
           ),
