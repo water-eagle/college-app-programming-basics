@@ -18,6 +18,13 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: '당근마켓 클론 코딩',
       initialRoute: '/',
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          backgroundColor: Color(0xff212123),
+          titleTextStyle: TextStyle(color: Colors.white),
+        ),
+      ),
       getPages: [GetPage(name: '/', page: () => const App())],
     );
   }
